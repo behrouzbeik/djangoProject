@@ -1,10 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}"/>
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
 
@@ -13,5 +17,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://use.fontawesome.com/1c6961eaa6.js"></script>
+<script src="{% static 'JS/Script.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.LOGO{
+    width: 30px;
+}
+
+.navParent{
+    width: 100%;
+    position: fixed;
+    transition: all 2s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+.navParentDeactive{
+    top: -100px;
+    left: 0;
+}
+.navParentActive{
+    top: 0;
+    left: 0;
+}
