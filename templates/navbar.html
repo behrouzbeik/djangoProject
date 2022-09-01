@@ -3,16 +3,16 @@
 <nav class="navbar navbar-expand bg-light">
 
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home:home' %}"><img class = "LOGO" src="{% static 'img/LOGO.png' %}" alt="turist"/></a>
+        <a class="navbar-brand" href="{% url 'home:Home' %}"><img class = "LOGO" src="{% static 'img/LOGO.png' %}" alt="turist"/></a>
         <div class="" id="">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-inline-flex ">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">EN <i class="fa fa-globe" aria-hidden="true"></i></a>
+                    <a class="nav-link" aria-current="page" href="#">{% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        <i class="fa fa-search" aria-hidden="true"></i> SUCHE
+                        <i class="fa fa-search" aria-hidden="true"></i> {% block Search %} {{ Search }} {% endblock %}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Ergebnisse anzeigen</a></li>
@@ -21,7 +21,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        <i class="fa fa-bed" aria-hidden="true"></i> ÜBERNACHTEN
+                        <i class="fa fa-bed" aria-hidden="true"></i> {% block Services %}{{ Services }}{% endblock %}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Jetzt buchen</a></li>
@@ -30,7 +30,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        <i class="fa fa-bars" aria-hidden="true"></i> MENÜ
+                        <i class="fa fa-bars" aria-hidden="true"></i> {% block Menu %}{{ Menu }}{% endblock %}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>

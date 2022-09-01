@@ -3,6 +3,36 @@ from .models import *
 
 # Create your views here.
 
-def home(request):
-    context = {'title':'Visit Lübeck - QUEEN OF THE HANSEATIC LEAGUE'}
-    return render(request,'home/home.html',context)
+def Home(request):
+    context = {
+        'title': 'QUEEN OF THE TURISM',
+        'Lang': 'De',
+        'Search': 'Search',
+        'Services': 'Services',
+        'Menu': 'Menu'
+    }
+    return render(request, 'home/EnHome.html', context)
+
+def EnHome(request):
+    context = {
+                'title':'QUEEN OF THE TURISM',
+                'Lang':'De',
+                'Search':'Search',
+                'Services':'Services',
+                'Menu':'Menu'
+              }
+    return render(request,'home/EnHome.html',context)
+
+
+def DeHome(request):
+    context = {
+        'title': 'KÖNIGIN DES TOURISMUS',
+        'Lang': 'En',
+        'Search': 'Suche',
+        'Services': 'Dienstleistungen',
+        'Menu': 'Menü'
+    }
+    return render(request, 'home/EnHome.html', context)
+
+def SelectLanguage(request):
+    pass
