@@ -33,39 +33,16 @@
                         <i class="fa fa-bars" aria-hidden="true"></i> {% block Menu %}{{ Menu }}{% endblock %}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        {% for menu in menu_items %}
+                            {% if Lang == 'De' %}
+                                <li><a class="dropdown-item" href="#">{{ menu.DeCaption }}</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="#">{{ menu.EnCaption }}</a></li>
+                            {% endif %}
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
             </ul>
