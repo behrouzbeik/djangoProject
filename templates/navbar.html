@@ -7,7 +7,7 @@
         <div class="" id="">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-inline-flex ">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">{% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
+                    <a class="nav-link" aria-current="page" href={% if Lang == 'En'%} "{% url 'home:Enhome' %} {% else %} "{% url 'home:Dehome' %} {% endif %}">{% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
