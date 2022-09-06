@@ -1,5 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
+from accounts.forms import UserRegisterForm
+
 
 # Create your views here.
 
@@ -8,6 +10,7 @@ def Home(request):
 
 def EnHome(request):
     menu_items = MenuItems.objects.all()
+    userregisterform = UserRegisterForm()
     context = {
         'title': 'QUEEN OF THE TURISM',
         'Lang': 'De',
@@ -19,12 +22,14 @@ def EnHome(request):
         'Menu': 'Menu',
         'menu_items': menu_items,
         'Airplane':'Airplane',
-        'Train' : 'Train'
+        'Train' : 'Train',
+        'userregisterform' : userregisterform
     }
     return render(request, 'home/EnHome.html', context)
 
 def DeHome(request):
     menu_items = MenuItems.objects.all()
+    userregisterform = UserRegisterForm()
     context = {
         'title': 'KÖNIGIN DES TOURISMUS',
         'Lang': 'En',
@@ -36,7 +41,8 @@ def DeHome(request):
         'Menu': 'Menü',
         'menu_items':menu_items,
         'Airplane' : 'Flugzeug',
-        'Train' : 'Zug'
+        'Train' : 'Zug',
+        'userregisterform': userregisterform
     }
     return render(request, 'home/EnHome.html', context)
 

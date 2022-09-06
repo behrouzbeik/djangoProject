@@ -13,16 +13,32 @@
                             {% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">{% block SignIn %}{{ SignIn }}{% endblock %} <i
-                                class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        <a class="nav-link" aria-current="page" href="#">{% block SignIn %}{{ SignIn }}{% endblock %}
+                        <i class="fa fa-sign-in" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">{% block SignOut %}{{ SignOut }}{% endblock %}
-                            <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">{% block SignUp %}{{ SignUp }}{% endblock %} <i
-                                class="fa fa-user-plus" aria-hidden="true"></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            {% block SignUp %}{{ SignUp }}{% endblock %}
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                {% block userregisterform %}
+                                    <form action="{% url 'accounts:Register' %}" method="post" novalidate>
+                                    {% csrf_token %}{{ userregisterform.as_p }}
+                                        <button type="submit">
+                                            {% if Lang == 'En' %} Registrieren {% else %} Register {% endif %}
+                                        </button>
+                                    </form>
+                                {% endblock %}
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
