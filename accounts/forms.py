@@ -12,3 +12,8 @@ class UserRegisterForm(forms.Form):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('email exist')
         return email
+
+
+class UserLoginForm(forms.Form):
+    Email = forms.EmailField()
+    password = forms.CharField()

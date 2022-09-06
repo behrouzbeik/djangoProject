@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 
@@ -17,3 +18,20 @@ def Register(request):
             return redirect('home:Home')
     else:
         pass
+
+
+def signin(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = authenticate(request, username=data['email'], password=data['password'])
+            if user is not None:
+                login(request, user)
+                return redirect('home:Home')
+            else:
+                pass
+    else:
+        pass
+
+    return render(request, 'accounts/login.html', {'form': form})
