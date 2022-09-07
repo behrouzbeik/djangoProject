@@ -12,28 +12,27 @@
                            href="{% if Lang == 'En' %} {% url 'home:Enhome' %} {% else %} {% url 'home:Dehome' %} {% endif %}">
                             {% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">{% block SignIn %}{{ SignIn }}{% endblock %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            {% block SignIn %}{{ SignIn }}{% endblock %}
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                {% block userloginform %}
-                                    <form action="{% url 'accounts:SignIn' %}" method="post" novalidate>
+                                {% block usersigninform %}
+                                    <form action="{% url 'accounts:signin' %}" method="post" novalidate>
                                     {% csrf_token %}{{ userloginform.as_p }}
                                         <button type="submit">
-                                            {% if Lang == 'En' %} Einloggen {% else %} Sign In {% endif %}
+                                            {% if Lang == 'En' %} Einloggen {% else %} SignIn {% endif %}
                                         </button>
                                     </form>
                                 {% endblock %}
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">{% block SignOut %}{{ SignOut }}{% endblock %}
-                            <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        </a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
@@ -53,6 +52,16 @@
                             </li>
                         </ul>
                     </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'accounts:signout' %}">
+                            {% block SignOut %}{{ SignOut }}{% endblock %}
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                {% endif %}
+
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">

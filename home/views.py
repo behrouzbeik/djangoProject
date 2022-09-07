@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
-from accounts.forms import UserRegisterForm,UserLoginForm
+from accounts.forms import *
 
 
 # Create your views here.
@@ -46,7 +46,8 @@ def DeHome(request):
         'Airplane' : 'Flugzeug',
         'Train' : 'Zug',
         'userregisterform': userregisterform,
-        'userloginform': userloginform
+        'userloginform': userloginform,
+
     }
     return render(request, 'home/EnHome.html', context)
 

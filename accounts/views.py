@@ -25,7 +25,7 @@ def signin(request):
         form = UserLoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = authenticate(request, username=data['email'], password=data['password'])
+            user = authenticate(request, username=data['Email'], password=data['password'])
             if user is not None:
                 login(request, user)
                 return redirect('home:Home')
@@ -35,3 +35,7 @@ def signin(request):
         pass
 
     return render(request, 'accounts/login.html', {'form': form})
+
+def signout(request):
+    logout(request)
+    return redirect('home:Home')
