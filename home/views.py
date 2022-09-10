@@ -25,7 +25,8 @@ def EnHome(request):
         'Airplane':'Airplane',
         'Train' : 'Train',
         'userregisterform' : userregisterform,
-        'userloginform' : userloginform
+        'userloginform' : userloginform,
+        'user' : request.user
     }
     return render(request, 'home/EnHome.html', context)
 
@@ -47,6 +48,7 @@ def DeHome(request):
         'Train' : 'Zug',
         'userregisterform': userregisterform,
         'userloginform': userloginform,
+        'user': request.user
 
     }
     return render(request, 'home/EnHome.html', context)
