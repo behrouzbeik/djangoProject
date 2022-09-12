@@ -16,12 +16,14 @@ class Category(models.Model):
     sub_cat = models.BooleanField(default=False)
     EnName = models.CharField(max_length=100)
     DeName = models.CharField(max_length=100)
+    Fontawesome4 = models.CharField(max_length=100,blank=True, null=True)
+    image = models.ImageField(upload_to='Services',blank=True,null=True)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     slug = models.SlugField(allow_unicode=True , unique=True,blank=True,null=True)
 
     def __str__(self):
-        return self.name
+        return self.EnName
 
     def get_absoloute_url(self):
         return reverse('home:category' ,args=[self.slug,self.id])
