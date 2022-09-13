@@ -1,7 +1,6 @@
 {% load static %}
 <div class="navParent navParentDeactive">
     <nav class="navbar navbar-expand bg-light">
-
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home:Home' %}"><img class="LOGO" src="{% static 'img/LOGO.png' %}"
                                                                       alt="turist"/></a>
@@ -10,12 +9,12 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page"
                            href="{% if Lang == 'En' %} {% url 'home:Enhome' %} {% else %} {% url 'home:Dehome' %} {% endif %}">
-                            {% block Lang %}{{ Lang }}{% endblock %} <i class="fa fa-globe" aria-hidden="true"></i></a>
+                            {{ Lang }} <i class="fa fa-globe" aria-hidden="true"></i></a>
                     </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{% url 'accounts:signout' %}">
-                            {% block SignOut %}{{ SignOut }}{% endblock %}
+                            {{ SignOut }}
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -23,38 +22,34 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            {% block SignIn %}{{ SignIn }}{% endblock %}
+                            {{ SignIn }}
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                {% block usersigninform %}
-                                    <form action="{% url 'accounts:signin' %}" method="post" novalidate>
-                                    {% csrf_token %}{{ userloginform.as_p }}
-                                        <button type="submit">
-                                            {% if Lang == 'En' %} Einloggen {% else %} SignIn {% endif %}
-                                        </button>
-                                    </form>
-                                {% endblock %}
+                                <form action="{% url 'accounts:signin' %}" method="post" novalidate>
+                                {% csrf_token %}{{ userloginform.as_p }}
+                                    <button type="submit">
+                                       {% if Lang == 'En' %} Einloggen {% else %} SignIn {% endif %}
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            {% block SignUp %}{{ SignUp }}{% endblock %}
+                            {{ SignUp }}
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                {% block userregisterform %}
-                                    <form action="{% url 'accounts:Register' %}" method="post" novalidate>
-                                    {% csrf_token %}{{ userregisterform.as_p }}
-                                        <button type="submit">
-                                            {% if Lang == 'En' %} Registrieren {% else %} Register {% endif %}
-                                        </button>
-                                    </form>
-                                {% endblock %}
+                                <form action="{% url 'accounts:Register' %}" method="post" novalidate>
+                                {% csrf_token %}{{ userregisterform.as_p }}
+                                    <button type="submit">
+                                        {% if Lang == 'En' %} Registrieren {% else %} Register {% endif %}
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -62,8 +57,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fa fa-search" aria-hidden="true"></i> {% block Search %}
-                            {{ Search }} {% endblock %}
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            {{ Search }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -79,28 +74,35 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
+                            aria-expanded="false">
                             <i class="fa fa-bed" aria-hidden="true"></i>
-                            {% block Services %}{{ Services }}{% endblock %}
+                            {{ Services }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-suitcase" aria-hidden="true"></i> Tour
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-h-square" aria-hidden="true"></i>
-                                Hotel</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-plane" aria-hidden="true"></i>
-                                {% block Airplane %}{{ Airplane }}{% endblock %}</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-train" aria-hidden="true"></i>
-                                {% block Train %}{{ Train }}{% endblock %}</a></li>
+                        <ul class="dropdown-menu dropdown-menu-end dropstart">
+                            {% for cat in category %}
+                                <li>
+                                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                    {% if Lang == 'En' %}
+                                        <i class="{{ cat.Fontawesome4 }}" aria-hidden="true"></i> {{ cat.DeName }}
+                                    {% else %}
+                                        <i class="{{ cat.Fontawesome4 }}" aria-hidden="true"></i> {{ cat.EnName }}
+                                    {% endif %}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>test</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fa fa-bars" aria-hidden="true"></i> {% block Menu %}{{ Menu }}{% endblock %}
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            {{ Menu }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             {% for menu in menu_items %}

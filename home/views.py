@@ -32,6 +32,7 @@ def EnHome(request):
 
 def DeHome(request):
     menu_items = MenuItems.objects.all()
+    category = Category.objects.all()
     userregisterform = UserRegisterForm()
     userloginform = UserLoginForm()
     context = {
@@ -48,7 +49,8 @@ def DeHome(request):
         'Train' : 'Zug',
         'userregisterform': userregisterform,
         'userloginform': userloginform,
-        'user': request.user
+        'user': request.user,
+        'category' : category
 
     }
     return render(request, 'home/EnHome.html', context)
