@@ -78,19 +78,17 @@
                             <i class="fa fa-bed" aria-hidden="true"></i>
                             {{ Services }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropstart">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             {% for cat in category %}
-                                <li>
-                                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                <li class="SubMenu dropdown">
+                                    <a class="dropdown-item" href="#">
                                     {% if Lang == 'En' %}
                                         <i class="{{ cat.Fontawesome4 }}" aria-hidden="true"></i> {{ cat.DeName }}
                                     {% else %}
                                         <i class="{{ cat.Fontawesome4 }}" aria-hidden="true"></i> {{ cat.EnName }}
                                     {% endif %}
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li>test</li>
-                                    </ul>
+
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">

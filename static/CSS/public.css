@@ -37,3 +37,12 @@
     width: 100%;
     min-width: 600px;
 }
+.SubMenu{
+    position: relative;
+}
+.SubMenu>ul{
+    position: absolute;
+    right: 100%;
+    top: 0;
+}
+
